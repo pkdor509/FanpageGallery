@@ -1,7 +1,7 @@
 <?php
 /*
   Developer : Pedro Valverde
-  GIT : http://github.com/pkdor509/lalala
+  Github: https://github.com/pkdor509/FanpageGallery
   Purpose : Display the public photo albums of a Facebook Page (Fanpage)
   Version : 1.0
 */
