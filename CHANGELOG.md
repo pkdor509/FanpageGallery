@@ -1,3 +1,7 @@
+## 1.3 (February 24, 2013)
+- **New and improved features:**
+	- Modified <code>lightbox.js</code> and <code>lightbox.css</code> to place the caption from bottom to right side of the image.
+	
 ## 1.2 (February 24, 2013)
 - **Repository changes:**
 	- Create <code>js</code> and <code>css</code> folders and move all related files there.
