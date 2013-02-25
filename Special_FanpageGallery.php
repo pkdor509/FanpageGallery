@@ -31,28 +31,19 @@ class Special_FanpageGallery{
 						'secret' => $app_secret,
 						'cookie' => true
 				));
-				$json = $facebook->api($fnpgID.'?fields=name');
-				echo $json['name'];
 				$gallery = '<div id="fanpage_gallery">';
 				if(isset($_GET['aid'])){
 					$json = $facebook->api($_GET['aid'] .'?fields=photos.fields(source,name)');
 					foreach($json['photos']['data'] as $photos){
-							//$cover_s = str_replace("_n.jpg","_a.jpg",$photos['source']);
-							$cover_s = $photos['source'];
-							$gallery .= "<div class='box photo col3'><a href='?pid=".$photos['id']."' title='".$photos['name']."' alt='".$photos['name']."'><img src='".$cover_s."' /></a></div>\n";
+							$cover = $photos['source'];
+							$gallery .= "<div class='box photo col3'><a href='".$cover."' rel='lightbox[gal]' title='<pre>".$photos['name']."</pre>' alt='".$photos['name']."'><img src='".$cover."' /></a></div>\n";
 					}	
-				}elseif(isset($_GET['pid'])){
-					$json = $facebook->api($_GET['pid'] .'?fields=source,name');
-							$cover_s = str_replace("s720x720","s480x480",$json['source']);
-							$gallery .= "<a href='".$json['source']."' rel='lightbox' title='<pre>".$json['name']."</pre>'><img src='".$cover_s."' /></a><pre>".$json['name']."</pre>";
-						
 				}else{
 					$json = $facebook->api($fnpgID .'?fields=albums.fields(id,name,photos.fields(source,name)),name');
 					foreach($json['albums']['data'] as $album){
 						if ($album['name'] != "Cover Photos" and $album['name'] != "Profile Pictures"){
-							//$cover_s = str_replace("_n.jpg","_a.jpg",$album['photos']['data'][0]['source']);
-							$cover_s = $album['photos']['data'][0]['source'];
-							$gallery .= "<div class='box photo col3'><a href='?aid=".$album['id']."' title='".$album['name']."' alt='".$album['name']."'><img src='".$cover_s."' /></a></div>\n";
+							$cover = $album['photos']['data'][0]['source'];
+							$gallery .= "<div class='box photo col3'><a href='?aid=".$album['id']."' title='".$album['name']."' alt='".$album['name']."'><img src='".$cover."' /></a></div>\n";
 						}
 					}		
 				}				
