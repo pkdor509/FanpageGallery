@@ -48,8 +48,8 @@ lightbox = new Lightbox options
   LightboxOptions = (function() {
 
     function LightboxOptions() {
-      this.fileLoadingImage = 'images/loading.gif';
-      this.fileCloseImage = 'images/close.png';
+      this.fileLoadingImage = '../images/loading.gif';
+      this.fileCloseImage = '../images/close.png';
       this.resizeDuration = 700;
       this.fadeDuration = 500;
       this.labelImage = "Image";
@@ -107,7 +107,7 @@ lightbox = new Lightbox options
         "class": 'lb-cancel'
       }).append($('<img/>', {
         src: this.options.fileLoadingImage
-      }))))), $('<div/>', {
+      }))), $('<div/>', {
         "class": 'lb-dataContainer'
       }).append($('<div/>', {
         "class": 'lb-data'
@@ -123,7 +123,7 @@ lightbox = new Lightbox options
         "class": 'lb-close'
       }).append($('<img/>', {
         src: this.options.fileCloseImage
-      }))))))).appendTo($('body'));
+      }))))))))).appendTo($('body'));
       $('#lightboxOverlay').hide().on('click', function(e) {
         _this.end();
         return false;
@@ -225,7 +225,7 @@ lightbox = new Lightbox options
       containerRightPadding = parseInt($container.css('padding-right'), 10);
       containerBottomPadding = parseInt($container.css('padding-bottom'), 10);
       containerLeftPadding = parseInt($container.css('padding-left'), 10);
-      newWidth = imageWidth + containerLeftPadding + containerRightPadding;
+      newWidth = (imageWidth + containerLeftPadding + containerRightPadding)+254;
       newHeight = imageHeight + containerTopPadding + containerBottomPadding;
       if (newWidth !== oldWidth && newHeight !== oldHeight) {
         $outerContainer.animate({
@@ -242,7 +242,8 @@ lightbox = new Lightbox options
         }, this.options.resizeDuration, 'swing');
       }
       setTimeout(function() {
-        $lightbox.find('.lb-dataContainer').width(newWidth);
+		$lightbox.find('.lb-container').width(newWidth);
+		$lightbox.find('.lb-nav').width(newWidth-254);
         $lightbox.find('.lb-prevLink').height(newHeight);
         $lightbox.find('.lb-nextLink').height(newHeight);
         _this.showImage();

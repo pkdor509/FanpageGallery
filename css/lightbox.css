@@ -16,7 +16,7 @@
   left: 0;
   width: 100%;
   z-index: 10000;
-  text-align: center;
+  text-align: left;
   line-height: 0;
   font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
   font-weight: normal;
@@ -124,7 +124,8 @@
   margin: 0 auto;
   padding-top: 5px;
   *zoom: 1;
-  width: 100%;
+  width: 255px;
+  float:right;
   -moz-border-radius-bottomleft: 4px;
   -webkit-border-bottom-left-radius: 4px;
   -ms-border-bottom-left-radius: 4px;
